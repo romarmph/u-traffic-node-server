@@ -15,6 +15,6 @@ const firebaseConfig = {
 
 admin.initializeApp(firebaseConfig);
 
-const firestore = admin.firestore();
+admin.firestore();
 
-module.exports = firestore;
+module.exports = admin;
