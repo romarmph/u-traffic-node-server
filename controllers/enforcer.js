@@ -5,11 +5,6 @@ dotenv.config();
 
 const createEnforcerAccount = (req, res) => {
   const { email, password } = req.body;
-
-  console.log(req.body);
-  console.log(email);
-  console.log(password);
-
   admin
     .auth()
     .createUser({
@@ -21,18 +16,16 @@ const createEnforcerAccount = (req, res) => {
     .then((user) => {
       data = {
         email: user.email,
-        password: user.password,
         uid: user.uid,
       };
-      res.send(data);
+      res.status(201).send(data);
     })
     .catch((error) => {
-      console.log(error);
       res.status(400).send(error.message);
     });
 };
 
-const resetEnforcerPassword = (req, res) => {
+const updateEnforcerAccount = (req, res) => {
   const { email, password, uid } = req.body;
 
   admin
@@ -40,7 +33,7 @@ const resetEnforcerPassword = (req, res) => {
     .updateUser(uid, {
       email: email,
       emailVerified: true,
-      password: password,
+      password: password.length > 0 ? password : undefined,
       disabled: false,
     })
     .then((user) => {
@@ -57,5 +50,5 @@ const resetEnforcerPassword = (req, res) => {
 
 module.exports = {
   createEnforcerAccount,
-  resetEnforcerPassword,
+  updateEnforcerAccount,
 };

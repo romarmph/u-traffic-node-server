@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const {
   createEnforcerAccount,
-  resetEnforcerPassword,
+  updateEnforcerAccount,
 } = require("../controllers/enforcer");
 
 router.post("/enforcer/create", createEnforcerAccount);
-router.post("/enforcer/reset", resetEnforcerPassword);
+router.post("/enforcer/update", updateEnforcerAccount);
 
 module.exports = router;
