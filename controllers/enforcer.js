@@ -5,6 +5,10 @@ dotenv.config();
 
 const createEnforcerAccount = (req, res) => {
   const { email, password } = req.body;
+
+  console.log(email);
+  console.log(password);
+
   admin
     .auth()
     .createUser({
@@ -21,6 +25,7 @@ const createEnforcerAccount = (req, res) => {
       res.status(201).send(data);
     })
     .catch((error) => {
+      console(error);
       res.status(400).send(error.message);
     });
 };
