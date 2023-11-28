@@ -1,7 +1,6 @@
 const admin = require("../config/index");
 
-
-const createEnforcerAccount = (req, res) => {
+const createAdminAccount = (req, res) => {
   const { email, password } = req.body;
 
   console.log(email);
@@ -28,7 +27,7 @@ const createEnforcerAccount = (req, res) => {
     });
 };
 
-const updateEnforcerAccount = (req, res) => {
+const updateAdminAccount = (req, res) => {
   const { email, password, uid } = req.body;
 
   admin
@@ -49,9 +48,9 @@ const updateEnforcerAccount = (req, res) => {
     .catch((error) => {
       res.status(400).send(error.message);
     });
-};
+}
 
 module.exports = {
-  createEnforcerAccount,
-  updateEnforcerAccount,
+  createAdminAccount,
+  updateAdminAccount,
 };
