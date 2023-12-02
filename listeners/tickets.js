@@ -19,7 +19,7 @@ function scheduleExpiry(ticketId, dueDate) {
   console.log("Tickets scheduled for expiry");
 }
 
-function scheduleNotification(ticketId, dateCreated, dueDate) {}
+function sendNofitication(ticketId, dateCreated, dueDate) {}
 
 db.collection("tickets").onSnapshot((snapshot) => {
   snapshot.docChanges().forEach((change) => {
@@ -35,7 +35,7 @@ db.collection("tickets").onSnapshot((snapshot) => {
 
       licenseQuery.then((snapshot) => {
         snapshot.forEach((doc) => {
-          console.log("You have a new ticket" + doc.data().userID);
+      
         });
       });
     }
